@@ -6,6 +6,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shradhanjalipage/description.dart';
+import 'package:shradhanjalipage/edit.dart';
 
 class Userdetail extends StatefulWidget {
   const Userdetail({super.key});
@@ -76,21 +77,8 @@ class _UserdetailState extends State<Userdetail> {
     addNewContainer();
     foundUser = relation;
     fName.text = "સ્વ.";
+    CardName.text = "શ્રદ્ધાંજલિ";
   }
-
-  // void addNewRow() {
-  //   _row.add(addRow(index));
-  //   print("$index++++++++++++++");
-  //   index++;
-  //   setState(() {});
-  // }
-
-  // void _removeRow(int id) {
-  //   setState(() {
-  //     // Remove the row with the specific identifier
-  //     _row.removeWhere((row) => (row.key as ValueKey).value == id);
-  //   });
-  // }
 
   void _removeContainer(int index) {
     setState(() {
@@ -98,51 +86,6 @@ class _UserdetailState extends State<Userdetail> {
       _container.removeWhere((container) => container.id == index);
     });
   }
-
-  // Widget addRow(int index) {
-  //   return Row(
-  //     key: ValueKey(index),
-  //     children: [
-  //       Expanded(
-  //         child: Card(
-  //           child: TextFormField(
-  //             controller: Name,
-  //             cursorOpacityAnimates: true,
-  //             cursorRadius: Radius.circular(10),
-  //             decoration: InputDecoration(
-  //                 contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-  //                 border: InputBorder.none,
-  //                 hintText: "લિ. નામ"),
-  //           ),
-  //         ),
-  //       ),
-  //       Expanded(
-  //         child: Card(
-  //           child: TextFormField(
-  //             controller: Phoneno,
-  //             keyboardType: TextInputType.number,
-  //             cursorOpacityAnimates: true,
-  //             cursorRadius: Radius.circular(10),
-  //             decoration: InputDecoration(
-  //                 contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-  //                 border: InputBorder.none,
-  //                 hintText: "મોબાઈલ નંબર"),
-  //           ),
-  //         ),
-  //       ),
-  //       index > 0
-  //           ? IconButton(
-  //               onPressed: () {
-  //                 print("$index++++++in+++++++");
-  //                 _removeRow(index);
-  //               },
-  //               icon: Icon(
-  //                 Icons.close_rounded,
-  //               ))
-  //           : SizedBox()
-  //     ],
-  //   );
-  // }
 
   void addNewContainer() {
     _container.add(ContainerModel(count, notifyParent));
@@ -155,72 +98,6 @@ class _UserdetailState extends State<Userdetail> {
     setState(() {});
   }
 
-  // Widget addContainer(int index) {
-  //   return Container(
-  //     key: ValueKey(index),
-  //     // height: mq.height / 5.5,
-  //     decoration: BoxDecoration(
-  //         border: Border.all(
-  //           color: Colors.white,
-  //         ),
-  //         borderRadius: BorderRadius.circular(12)),
-  //     child: Padding(
-  //       padding: const EdgeInsets.all(5.0),
-  //       child: Column(
-  //         children: [
-  //           Row(
-  //             children: [
-  //               Expanded(
-  //                 child: Card(
-  //                   child: TextFormField(
-  //                     controller: Title,
-  //                     cursorOpacityAnimates: true,
-  //                     cursorRadius: Radius.circular(10),
-  //                     decoration: InputDecoration(
-  //                         contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-  //                         border: InputBorder.none,
-  //                         hintText: "શીર્ષક"),
-  //                   ),
-  //                 ),
-  //               ),
-  //               Expanded(
-  //                 child: InkWell(
-  //                   onTap: addNewRow,
-  //                   child: Container(
-  //                     height: 50,
-  //                     // height: mq.height / 12.5,
-  //                     child: Card(
-  //                       elevation: 0,
-  //                       child: Padding(
-  //                         padding: const EdgeInsets.all(10.0),
-  //                         child: Center(
-  //                           child: Text("નવું ઉમેરો"),
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ),
-  //                 ),
-  //               ),
-  //               index > 0
-  //                   ? IconButton(
-  //                       onPressed: () {
-  //                         print("$index++++++in+++++++");
-  //                         setState(() {
-  //                           _removeContainer(index);
-  //                         });
-  //                       },
-  //                       icon: Icon(
-  //                         Icons.delete_rounded,
-  //                       ))
-  //                   : SizedBox()
-  //             ],
-  //           ),
-  //           ..._row
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
   XFile? file;
 
   Future<void> cropImage(String path) async {
@@ -261,7 +138,6 @@ class _UserdetailState extends State<Userdetail> {
   Widget build(BuildContext context) {
     var mq = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xff9DA0E8),
       appBar: AppBar(
         title: Text("શ્રદ્ધાંજલિ"),
         centerTitle: true,
@@ -273,343 +149,233 @@ class _UserdetailState extends State<Userdetail> {
                 size: 30,
               ))
         ],
-        backgroundColor: Colors.amber,
-        leading: IconButton(
-            onPressed: () {
-              // Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              size: 30,
-            )),
+        backgroundColor: Colors.blue.shade100,
+        automaticallyImplyLeading: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Center(
-              child: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Dialog(
-                            backgroundColor: Colors.transparent,
-                            insetPadding: EdgeInsets.all(10),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                child: file == null
-                                    ? Image.asset("assets/profile.png")
-                                    : Image.file(File(file!.path)),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Colors.blue.shade100,
+              Colors.blue.shade200,
+              Colors.blue.shade300
+            ])),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Center(
+                child: Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              backgroundColor: Colors.transparent,
+                              insetPadding: EdgeInsets.all(10),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  child: file == null
+                                      ? Image.asset("assets/profile.png")
+                                      : Image.file(File(file!.path)),
+                                ),
                               ),
+                            );
+                          },
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundColor: Colors.blue,
+                        backgroundImage: file == null
+                            ? Image.asset("assets/profile.png").image
+                            : Image.file(File(file!.path)).image,
+                      ),
+                    ),
+                    Positioned(
+                        bottom: 1,
+                        right: 1,
+                        child: InkWell(
+                          onTap: () async {
+                            ImagePicker imagePicker = ImagePicker();
+                            file = await imagePicker.pickImage(
+                                source: ImageSource.gallery);
+                            if (file!.path.isNotEmpty) {
+                              imgpath = file!.path;
+                              cropImage(imgpath);
+                            }
+                            setState(() {});
+                          },
+                          child: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
                             ),
-                          );
-                        },
-                      );
-                    },
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundColor: Colors.blue,
-                      backgroundImage: file == null
-                          ? Image.asset("assets/profile.png").image
-                          : Image.file(File(file!.path)).image,
+                            child: Icon(Icons.camera_enhance),
+                          ),
+                        ))
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "કાર્ડ નું નામ",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Card(
+                child: TextFormField(
+                  controller: CardName,
+                  cursorOpacityAnimates: true,
+                  cursorRadius: Radius.circular(10),
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                      border: InputBorder.none,
+                      hintText: "કાર્ડ નું નામ"),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "મૃતકનું નામ",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: mq.width / 5,
+                    child: Card(
+                      child: TextFormField(
+                        controller: fName,
+                        cursorOpacityAnimates: true,
+                        cursorRadius: Radius.circular(10),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(18, 12, 18, 12),
+                          border: InputBorder.none,
+                          hintText: "સ્વ.",
+                        ),
+                      ),
                     ),
                   ),
-                  Positioned(
-                      bottom: 1,
-                      right: 1,
-                      child: InkWell(
-                        onTap: () async {
-                          ImagePicker imagePicker = ImagePicker();
-                          file = await imagePicker.pickImage(
-                              source: ImageSource.gallery);
-                          if (file!.path.isNotEmpty) {
-                            imgpath = file!.path;
-                            cropImage(imgpath);
-                          }
-                          setState(() {});
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Icon(Icons.camera_enhance),
-                        ),
-                      ))
+                  Expanded(
+                    child: Card(
+                      child: TextFormField(
+                        controller: lName,
+                        cursorOpacityAnimates: true,
+                        cursorRadius: Radius.circular(10),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                            border: InputBorder.none,
+                            hintText: "મૃતકનું નામ"),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "કાર્ડ નું નામ",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Card(
-              child: TextFormField(
-                controller: CardName,
-                cursorOpacityAnimates: true,
-                cursorRadius: Radius.circular(10),
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                    border: InputBorder.none,
-                    hintText: "કાર્ડ નું નામ"),
+              SizedBox(
+                height: 15,
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "મૃતકનું નામ",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: mq.width / 5,
-                  child: Card(
-                    child: TextFormField(
-                      controller: fName,
-                      cursorOpacityAnimates: true,
-                      cursorRadius: Radius.circular(10),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(18, 12, 18, 12),
-                        border: InputBorder.none,
-                        hintText: "સ્વ.",
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: TextFormField(
-                      controller: lName,
-                      cursorOpacityAnimates: true,
-                      cursorRadius: Radius.circular(10),
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                          border: InputBorder.none,
-                          hintText: "મૃતકનું નામ"),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "મૃતક સાથેનો સંબંધ",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Card(
-              child: TextFormField(
-                controller: cName,
-                readOnly: true,
-                cursorOpacityAnimates: true,
-                cursorRadius: Radius.circular(10),
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                    border: InputBorder.none,
-                    hintText: "મૃતક સાથેનો સંબંધ"),
-                onTap: () {
-                  showAlertDialog(context);
-                },
+              Text(
+                "મૃતક સાથેનો સંબંધ",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: mq.width / 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ઉંમર",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Card(
-                        child: TextFormField(
-                          controller: Age,
-                          keyboardType: TextInputType.number,
-                          cursorOpacityAnimates: true,
-                          cursorRadius: Radius.circular(10),
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(18, 12, 18, 12),
-                            border: InputBorder.none,
-                            hintText: "ઉંમર",
+              SizedBox(
+                height: 5,
+              ),
+              Card(
+                child: TextFormField(
+                  controller: cName,
+                  readOnly: true,
+                  cursorOpacityAnimates: true,
+                  cursorRadius: Radius.circular(10),
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                      border: InputBorder.none,
+                      hintText: "મૃતક સાથેનો સંબંધ"),
+                  onTap: () {
+                    showAlertDialog(context);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: mq.width / 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "ઉંમર",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Card(
+                          child: TextFormField(
+                            controller: Age,
+                            keyboardType: TextInputType.number,
+                            cursorOpacityAnimates: true,
+                            cursorRadius: Radius.circular(10),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.fromLTRB(18, 12, 18, 12),
+                              border: InputBorder.none,
+                              hintText: "ઉંમર",
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "દેવલોક પામ્યાની તારીખ",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 5),
-                      Card(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                readOnly: true,
-                                controller: Date,
-                                cursorOpacityAnimates: true,
-                                onTap: () async {
-                                  var date = await showDatePicker(
-                                      builder: (BuildContext context,
-                                          Widget? child) {
-                                        return Theme(
-                                          data: ThemeData().copyWith(
-                                              colorScheme:
-                                                  const ColorScheme.light(
-                                            primary: Color(0xff9DA0E8),
-                                            onPrimary: Colors.white,
-                                            onSurface: Colors.black,
-                                          )),
-                                          child: child!,
-                                        );
-                                      },
-                                      context: context,
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime.now(),
-                                      lastDate: DateTime(2025, 5));
-                                  if (date != null) {
-                                    String formatedDate =
-                                        DateFormat('dd-MM-yyyy, EEEE')
-                                            .format(date);
-                                    setState(() {
-                                      Date.text = formatedDate;
-                                    });
-                                  }
-                                  // Date.text =
-                                  // "${date!.day}-${date.month}-${date.year}";
-                                },
-                                cursorRadius: Radius.circular(10),
-                                decoration: InputDecoration(
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                  border: InputBorder.none,
-                                  hintText: "દેવલોક પામ્યાની તારીખ",
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                // color: Colors.amber,
-                                image: DecorationImage(
-                                  image: AssetImage("assets/calendar.png"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "દેવલોક પામ્યાની તારીખ",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: mq.width / 2.5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ગામનું નામ",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Card(
-                        child: TextFormField(
-                          controller: village,
-                          cursorOpacityAnimates: true,
-                          cursorRadius: Radius.circular(10),
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(18, 12, 18, 12),
-                            border: InputBorder.none,
-                            hintText: "ગામનું નામ",
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "અંતિમ સંસ્કારની તારીખ",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 5),
-                      Card(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                readOnly: true,
-                                controller: lDate,
-                                cursorOpacityAnimates: true,
-                                onTap: () async {
-                                  if (Date.text.isEmpty) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('Date required'),
-                                      ),
-                                    );
-                                  } else {
+                        SizedBox(height: 5),
+                        Card(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  readOnly: true,
+                                  controller: Date,
+                                  cursorOpacityAnimates: true,
+                                  onTap: () async {
                                     var date = await showDatePicker(
                                         builder: (BuildContext context,
                                             Widget? child) {
@@ -633,258 +399,378 @@ class _UserdetailState extends State<Userdetail> {
                                           DateFormat('dd-MM-yyyy, EEEE')
                                               .format(date);
                                       setState(() {
-                                        lDate.text = formatedDate;
+                                        Date.text = formatedDate;
                                       });
                                     }
-                                    // lDate.text =
-                                    //     "${date!.day}-${date.month}-${date.year}";
-                                  }
+                                    // Date.text =
+                                    // "${date!.day}-${date.month}-${date.year}";
+                                  },
+                                  cursorRadius: Radius.circular(10),
+                                  decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                    border: InputBorder.none,
+                                    hintText: "દેવલોક પામ્યાની તારીખ",
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                child: Image.asset(
+                                  "assets/calendar.png",
+                                  scale: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: mq.width / 2.5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "ગામનું નામ",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Card(
+                          child: TextFormField(
+                            controller: village,
+                            cursorOpacityAnimates: true,
+                            cursorRadius: Radius.circular(10),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.fromLTRB(18, 12, 18, 12),
+                              border: InputBorder.none,
+                              hintText: "ગામનું નામ",
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "અંતિમ સંસ્કારની તારીખ",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 5),
+                        Card(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  readOnly: true,
+                                  controller: lDate,
+                                  cursorOpacityAnimates: true,
+                                  onTap: () async {
+                                    if (Date.text.isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text('Date required'),
+                                        ),
+                                      );
+                                    } else {
+                                      var date = await showDatePicker(
+                                          builder: (BuildContext context,
+                                              Widget? child) {
+                                            return Theme(
+                                              data: ThemeData().copyWith(
+                                                  colorScheme:
+                                                      const ColorScheme.light(
+                                                primary: Color(0xff9DA0E8),
+                                                onPrimary: Colors.white,
+                                                onSurface: Colors.black,
+                                              )),
+                                              child: child!,
+                                            );
+                                          },
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: DateTime.now(),
+                                          lastDate: DateTime(2025, 5));
+                                      if (date != null) {
+                                        String formatedDate =
+                                            DateFormat('dd-MM-yyyy, EEEE')
+                                                .format(date);
+                                        setState(() {
+                                          lDate.text = formatedDate;
+                                        });
+                                      }
+                                      // lDate.text =
+                                      //     "${date!.day}-${date.month}-${date.year}";
+                                    }
+                                  },
+                                  cursorRadius: Radius.circular(10),
+                                  decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                    border: InputBorder.none,
+                                    hintText: "અંતિમ સંસ્કારની તારીખ",
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: Image.asset(
+                                  "assets/calendar.png",
+                                  scale: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "પ્રારંભ સમય",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Card(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {},
+                        child: TextFormField(
+                          readOnly: true,
+                          controller: Time,
+                          cursorOpacityAnimates: true,
+                          onTap: () async {
+                            var time = await showTimePicker(
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                    data: ThemeData().copyWith(
+                                        colorScheme: const ColorScheme.light(
+                                      primary: Color(0xff9DA0E8),
+                                      onPrimary: Colors.white,
+                                      onSurface: Colors.black,
+                                    )),
+                                    child: child!,
+                                  );
                                 },
-                                cursorRadius: Radius.circular(10),
-                                decoration: InputDecoration(
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                  border: InputBorder.none,
-                                  hintText: "અંતિમ સંસ્કારની તારીખ",
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                // color: Colors.amber,
-                                image: DecorationImage(
-                                  image: AssetImage("assets/calendar.png"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ],
+                                context: context,
+                                initialTime: TimeOfDay.now());
+                            if (time != null) {
+                              final now = DateTime.now();
+                              String formatedtime = DateFormat('hh:mm a')
+                                  .format(DateTime(now.year, now.month, now.day,
+                                      time.hour, time.minute));
+                              setState(() {
+                                Time.text = formatedtime;
+                              });
+                            }
+                          },
+                          cursorRadius: Radius.circular(10),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                            border: InputBorder.none,
+                            hintText: "પ્રારંભ સમય",
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        // color: Colors.amber,
+                        image: DecorationImage(
+                          image: AssetImage("assets/clock.png"),
+                          scale: 15,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "પ્રારંભ સમય",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Card(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      readOnly: true,
-                      controller: Time,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "સરનામું",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Card(
+                child: TextFormField(
+                  controller: Address,
+                  cursorOpacityAnimates: true,
+                  cursorRadius: Radius.circular(10),
+                  maxLines: 4,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                      border: InputBorder.none,
+                      hintText: "સરનામું"),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "વર્ણન",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Card(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: Desc,
                       cursorOpacityAnimates: true,
-                      onTap: () async {
-                        var time = await showTimePicker(
-                            builder: (BuildContext context, Widget? child) {
-                              return Theme(
-                                data: ThemeData().copyWith(
-                                    colorScheme: const ColorScheme.light(
-                                  primary: Color(0xff9DA0E8),
-                                  onPrimary: Colors.white,
-                                  onSurface: Colors.black,
-                                )),
-                                child: child!,
-                              );
-                            },
-                            context: context,
-                            initialTime: TimeOfDay.now());
-                        if (time != null) {
-                          final now = DateTime.now();
-                          String formatedtime = DateFormat('hh:mm a').format(
-                              DateTime(now.year, now.month, now.day, time.hour,
-                                  time.minute));
-                          setState(() {
-                            Time.text = formatedtime;
-                          });
-                        }
-                      },
                       cursorRadius: Radius.circular(10),
+                      maxLines: 5,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
                         border: InputBorder.none,
-                        hintText: "પ્રારંભ સમય",
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      // color: Colors.amber,
-                      image: DecorationImage(
-                        image: AssetImage("assets/clock.png"),
-                        scale: 13,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "સરનામું",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Card(
-              child: TextFormField(
-                controller: Address,
-                cursorOpacityAnimates: true,
-                cursorRadius: Radius.circular(10),
-                maxLines: 4,
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                    border: InputBorder.none,
-                    hintText: "સરનામું"),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "વર્ણન",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Card(
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: Desc,
-                    cursorOpacityAnimates: true,
-                    cursorRadius: Radius.circular(10),
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                  Divider(),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: TextButton(
-                        onPressed: () async {
-                          var response = await Navigator.of(context)
-                              .push(CupertinoPageRoute(
-                            builder: (context) => Discription(
-                                initialSelectedIndex: selectedIndex),
-                          ));
-                          print("$response--res");
-                          if (response != null) {
-                            selectedIndex = response;
-                            Desc.text = response != -1 ? desc[response] : "";
-                          }
+                    Divider(),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: TextButton(
+                          onPressed: () async {
+                            var response = await Navigator.of(context)
+                                .push(CupertinoPageRoute(
+                              builder: (context) => Discription(
+                                  initialSelectedIndex: selectedIndex),
+                            ));
+                            print("$response--res");
+                            if (response != null) {
+                              selectedIndex = response;
+                              Desc.text = response != -1 ? desc[response] : "";
+                            }
 
-                          setState(() {});
-                        },
-                        child: Text(
-                          "બદલો",
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                            setState(() {});
+                          },
+                          child: Text(
+                            "બદલો",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "લિ.",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              height: containerHeight(_container.length, mq),
-              // color: Colors.amber,
-              child: ListView.builder(
-                itemCount: _container.length,
-                itemBuilder: (context, index) {
-                  return _container[index]
-                      .buildContainer(context, mq, _removeContainer);
-                },
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    if (_container.length < 5) {
-                      addNewContainer();
-                    }
-                  });
-                },
-                child: Visibility(
-                  visible: _container.length < 5 ? true : false,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.add_circle_outline_rounded,
-                      color: Colors.black,
-                      size: 35,
-                    ),
-                    radius: 20,
-                  ),
+                    )
+                  ],
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            Align(
-              alignment: Alignment.center,
-              child: InkWell(
-                onTap: () {
-                  print(
-                      "${CardName.text}-${fName.text}-${lName.text}-${cName.text}-${Age.text}-${Date.text}-${lDate.text}-${village.text}-${Time.text}-${Address.text}-----");
-                },
-                child: Container(
-                  height: 50,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white),
-                  child: Center(
-                    child: Text(
-                      "SAVE",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "લિ.",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                height: containerHeight(_container.length, mq),
+                // color: Colors.amber,
+                child: ListView.builder(
+                  itemCount: _container.length,
+                  itemBuilder: (context, index) {
+                    return _container[index]
+                        .buildContainer(context, mq, _removeContainer);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (_container.length < 5) {
+                        addNewContainer();
+                      }
+                    });
+                  },
+                  child: Visibility(
+                    visible: _container.length < 5 ? true : false,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.add_circle_outline_rounded,
+                        color: Colors.black,
+                        size: 35,
+                      ),
+                      radius: 20,
                     ),
                   ),
                 ),
               ),
-            )
-          ]),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(CupertinoPageRoute(
+                      builder: (context) => Masterpage(),
+                    ));
+                    print(
+                        "${CardName.text}-${fName.text}-${lName.text}-${cName.text}-${Age.text}-${Date.text}-${lDate.text}-${village.text}-${Time.text}-${Address.text}-----");
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white),
+                    child: Center(
+                      child: Text(
+                        "SAVE",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ]),
+          ),
         ),
       ),
     );
@@ -1147,3 +1033,131 @@ class ContainerModel {
     );
   }
 }
+
+
+// void addNewRow() {
+  //   _row.add(addRow(index));
+  //   print("$index++++++++++++++");
+  //   index++;
+  //   setState(() {});
+  // }
+
+  // void _removeRow(int id) {
+  //   setState(() {
+  //     // Remove the row with the specific identifier
+  //     _row.removeWhere((row) => (row.key as ValueKey).value == id);
+  //   });
+  // }
+
+// Widget addRow(int index) {
+  //   return Row(
+  //     key: ValueKey(index),
+  //     children: [
+  //       Expanded(
+  //         child: Card(
+  //           child: TextFormField(
+  //             controller: Name,
+  //             cursorOpacityAnimates: true,
+  //             cursorRadius: Radius.circular(10),
+  //             decoration: InputDecoration(
+  //                 contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+  //                 border: InputBorder.none,
+  //                 hintText: "લિ. નામ"),
+  //           ),
+  //         ),
+  //       ),
+  //       Expanded(
+  //         child: Card(
+  //           child: TextFormField(
+  //             controller: Phoneno,
+  //             keyboardType: TextInputType.number,
+  //             cursorOpacityAnimates: true,
+  //             cursorRadius: Radius.circular(10),
+  //             decoration: InputDecoration(
+  //                 contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+  //                 border: InputBorder.none,
+  //                 hintText: "મોબાઈલ નંબર"),
+  //           ),
+  //         ),
+  //       ),
+  //       index > 0
+  //           ? IconButton(
+  //               onPressed: () {
+  //                 print("$index++++++in+++++++");
+  //                 _removeRow(index);
+  //               },
+  //               icon: Icon(
+  //                 Icons.close_rounded,
+  //               ))
+  //           : SizedBox()
+  //     ],
+  //   );
+  // }
+
+// Widget addContainer(int index) {
+  //   return Container(
+  //     key: ValueKey(index),
+  //     // height: mq.height / 5.5,
+  //     decoration: BoxDecoration(
+  //         border: Border.all(
+  //           color: Colors.white,
+  //         ),
+  //         borderRadius: BorderRadius.circular(12)),
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(5.0),
+  //       child: Column(
+  //         children: [
+  //           Row(
+  //             children: [
+  //               Expanded(
+  //                 child: Card(
+  //                   child: TextFormField(
+  //                     controller: Title,
+  //                     cursorOpacityAnimates: true,
+  //                     cursorRadius: Radius.circular(10),
+  //                     decoration: InputDecoration(
+  //                         contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+  //                         border: InputBorder.none,
+  //                         hintText: "શીર્ષક"),
+  //                   ),
+  //                 ),
+  //               ),
+  //               Expanded(
+  //                 child: InkWell(
+  //                   onTap: addNewRow,
+  //                   child: Container(
+  //                     height: 50,
+  //                     // height: mq.height / 12.5,
+  //                     child: Card(
+  //                       elevation: 0,
+  //                       child: Padding(
+  //                         padding: const EdgeInsets.all(10.0),
+  //                         child: Center(
+  //                           child: Text("નવું ઉમેરો"),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ),
+  //               index > 0
+  //                   ? IconButton(
+  //                       onPressed: () {
+  //                         print("$index++++++in+++++++");
+  //                         setState(() {
+  //                           _removeContainer(index);
+  //                         });
+  //                       },
+  //                       icon: Icon(
+  //                         Icons.delete_rounded,
+  //                       ))
+  //                   : SizedBox()
+  //             ],
+  //           ),
+  //           ..._row
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+ 
