@@ -27,7 +27,7 @@ class _MasterpageState extends State<Masterpage> {
         children: [
           Container(
             width: mq.width,
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery.of(context).size.height * 0.65,
             child: SingleChildScrollView(
               child: Container(
                 color: Colors.blue,
@@ -41,17 +41,32 @@ class _MasterpageState extends State<Masterpage> {
           ),
           Expanded(
             child: Container(
-              color: Colors.deepPurpleAccent,
+              // color: Colors.deepPurpleAccent,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  SizedBox(
+                    height: 5,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         width: mq.width * 0.46,
                         height: mq.height * 0.06,
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                            border: Border.all(),
+                            color: Colors.white,
+                            gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Colors.blue.shade50,
+                                  Colors.blue.shade100,
+                                  Colors.blue.shade200,
+                                  Colors.blue.shade300
+                                ]),
+                            borderRadius: BorderRadius.circular(20)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -62,34 +77,46 @@ class _MasterpageState extends State<Masterpage> {
                             Text(
                               "Download",
                               style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: mq.width * 0.46,
-                          height: mq.height * 0.06,
-                          color: Colors.white,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.share),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Share",
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
+                      Container(
+                        width: mq.width * 0.46,
+                        height: mq.height * 0.06,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(),
+                            gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Colors.blue.shade50,
+                                  Colors.blue.shade100,
+                                  Colors.blue.shade200,
+                                  Colors.blue.shade300
+                                ]),
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.share),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Share",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            )
+                          ],
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,7 +124,20 @@ class _MasterpageState extends State<Masterpage> {
                       Container(
                         width: mq.width * 0.46,
                         height: mq.height * 0.06,
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(),
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Colors.blue.shade50,
+                                Colors.blue.shade100,
+                                Colors.blue.shade200,
+                                Colors.blue.shade300
+                              ]),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -108,69 +148,89 @@ class _MasterpageState extends State<Masterpage> {
                             Text(
                               "Card",
                               style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: InkWell(
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                return Container(
-                                  color: Colors.orange,
-                                  height: 250,
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            width: mq.width * 0.46,
-                            height: mq.height * 0.06,
-                            color: Colors.white,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.edit),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Edit",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                )
-                              ],
-                            ),
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                color: Colors.orange,
+                                height: 250,
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          width: mq.width * 0.46,
+                          height: mq.height * 0.06,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(),
+                              gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Colors.blue.shade50,
+                                    Colors.blue.shade100,
+                                    Colors.blue.shade200,
+                                    Colors.blue.shade300
+                                  ]),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.edit),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Edit",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
                           ),
                         ),
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Container(
-                      width: mq.width * 0.60,
-                      height: mq.height * 0.06,
-                      color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.audiotrack),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Audio",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    width: mq.width * 0.46,
+                    height: mq.height * 0.06,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        border: Border.all(),
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.blue.shade50,
+                              Colors.blue.shade100,
+                              Colors.blue.shade200,
+                              Colors.blue.shade300
+                            ])),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.audiotrack),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Audio",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
                   ),
                 ],
