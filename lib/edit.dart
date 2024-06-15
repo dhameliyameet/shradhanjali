@@ -159,7 +159,11 @@ class _MasterpageState extends State<Masterpage> {
                             context: context,
                             builder: (context) {
                               return Container(
-                                color: Colors.orange,
+                                decoration: BoxDecoration(
+                                    // color: Colors.orange,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(25),
+                                        topRight: Radius.circular(25))),
                                 height: 250,
                               );
                             },
